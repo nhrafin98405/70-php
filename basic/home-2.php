@@ -6,13 +6,14 @@
     <title>php</title>
 </head>
 <body>
-
-<?php 
+    
+<?php
+/* 
 
 $date = "05-march-2026";
 
+*/
 ?>
-
 
 
 <h1>today is <?= $date; ?></h1>
