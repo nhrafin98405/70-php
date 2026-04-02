@@ -5,7 +5,7 @@ $wrt = file_put_contents("store.txt","hellow\n ",FILE_APPEND);
 
 echo "success";
 
-// echo file_get_contents("store.txt");
+// echo file_get_contents("store.txt");=
 
 
 
