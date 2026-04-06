@@ -1,101 +1,107 @@
 <style>
+    /* Background (more vibrant gradient) */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+        background-size: 300% 300%;
+        animation: gradientMove 8s ease infinite;
+    }
 
-/* Background (more vibrant gradient) */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
-    background-size: 300% 300%;
-    animation: gradientMove 8s ease infinite;
-}
+    /* Animated gradient */
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
 
-/* Animated gradient */
-@keyframes gradientMove {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
+        50% {
+            background-position: 100% 50%;
+        }
 
-/* Smaller container */
-.table-box {
-    width: 55%;
-    margin: 60px auto;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    color: #fff;
-}
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 
-/* Title */
-.table-title {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 20px;
-}
+    /* Smaller container */
+    .table-box {
+        width: 55%;
+        margin: 60px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #fff;
+    }
 
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+    /* Title */
+    .table-title {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
 
-/* Header */
-th {
-    padding: 10px;
-    background: linear-gradient(45deg, #ff512f, #dd2476);
-    font-size: 13px;
-}
+    /* Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-/* Cells */
-td {
-    padding: 8px;
-    font-size: 13px;
-    text-align: center;
-    color: #fff;
-    font-weight: bolder;
-    font-size: 15px;
-}
+    /* Header */
+    th {
+        padding: 10px;
+        background: linear-gradient(45deg, #ff512f, #dd2476);
+        font-size: 13px;
+    }
 
-/* Row hover */
-tr:hover {
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.01);
-    transition: 0.3s;
-}
+    /* Cells */
+    td {
+        padding: 8px;
+        font-size: 13px;
+        text-align: center;
+        color: #fff;
+        font-weight: bolder;
+        font-size: 15px;
+    }
 
-/* Zebra rows */
-tr:nth-child(even) {
-    background: rgba(255,255,255,0.05);
-}
+    /* Row hover */
+    tr:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.01);
+        transition: 0.3s;
+    }
 
-/* Buttons */
-.btn {
-    padding: 4px 8px;
-    border: none;
-    border-radius: 5px;
-    font-size: 11px;
-    cursor: pointer;
-}
+    /* Zebra rows */
+    tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+    }
 
-/* Edit */
-.edit {
-    background: #00dbde;
-    color: white;
-}
+    /* Buttons */
+    .btn {
+        padding: 4px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 11px;
+        cursor: pointer;
+    }
 
-/* Delete */
-.delete {
-    background: #fc466b;
-    color: white;
-}
+    /* Edit */
+    .edit {
+        background: #00dbde;
+        color: white;
+    }
 
-/* Button hover */
-.btn:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
-}
+    /* Delete */
+    .delete {
+        background: #fc466b;
+        color: white;
+    }
 
+    /* Button hover */
+    .btn:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
 </style>
 
 
@@ -106,18 +112,18 @@ tr:nth-child(even) {
         <th>Email</th>
     </tr>
 
-<?php
-$file = file("nhr_text.txt");
+    <?php
+    $file = file("nhr_text.txt");
 
-foreach($file as $line){
-    list($id,$name, $email) = explode(",", trim($line));
+    foreach ($file as $line) {
+        list($id, $name, $email) = explode(",", trim($line));
 
-    echo "<tr>
+        echo "<tr>
             <td>$id</td>
             <td>$name</td>
             <td>$email</td>
           </tr>";
-}
-?>
+    }
+    ?>
 
 </table>
