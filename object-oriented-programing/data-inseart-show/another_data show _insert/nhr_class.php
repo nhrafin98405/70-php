@@ -7,17 +7,28 @@ class Nhr{
 
     public $name;
     public $email;
-    public $id;
+    private $id;
     public static $file_source = "nhr_text.txt";
 
-    public function __construct($_name, $_id, $_email){ 
+    public function __construct($_name, $_email){ 
         $this->name = $_name;
         $this->email = $_email;
-        $this->id = $_id;
+        
+    }
+
+}
+class Raffu extends Nhr{ 
+
+    public $id;
+
+    function __construct($name, $id, $address)
+    {
+        parent::__construct($name, $address);
+        $this->id = $id;
     }
 
     public function NhRafin(){ 
-        return $this->name . " , " . $this->email . " , ".$this->id. PHP_EOL ;
+        return $this->id . " , " . $this->name . " , ".$this->email. PHP_EOL ;
     }
 
     public function store(){
@@ -29,6 +40,7 @@ class Nhr{
         // for data show 
     }
 }
+
 
 
 
