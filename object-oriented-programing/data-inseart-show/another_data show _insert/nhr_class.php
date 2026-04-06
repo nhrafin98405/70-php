@@ -23,7 +23,7 @@ class Hasan extends Nhr
 
     public $id;
 
-    function __construct($name, $id, $email)
+    function __construct($id,$name, $email)
     {
         parent::__construct($name, $email);
         $this->id = $id;
@@ -39,9 +39,5 @@ class Hasan extends Nhr
         file_put_contents(self::$file_source, $this->NhRafin(), FILE_APPEND);
     }
 
-    public static function display()
-    {
-
-        // for data show 
-    }
+    
 }
