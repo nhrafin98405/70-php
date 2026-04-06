@@ -1,6 +1,356 @@
-546 , fghd , nhrafin98405@gmail.com
-546 , fghd , nhrafin98405@gmail.com
-546,fghd,nhrafin98405@gmail.com
-546,fghd,nhrafin98405@gmail.com
-546,fghd,nhrafin98405@gmail.com
-546,fghd,nhrafin98405@gmail.com
+<?php
+
+require_once("nhr_class.php");
+
+$message = "";
+
+
+if (isset($_POST["btnsubmit"])) {
+
+
+    $uid = $_POST["id"];
+    $uname = $_POST["name"];
+    $uemail = $_POST["email"];
+
+    $r = new Hasan($uid, $uname, $uemail);
+    $r->store();
+    $message = "✅ Data Successfully Added!";
+}
+
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Form</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Background */
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glass Form */
+        .form-box {
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Title */
+        .form-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Input group */
+        .input-group {
+            position: relative;
+            margin-top: 15px;
+        }
+
+        /* Inputs */
+        .input-group input {
+            width: 100%;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Icons */
+        .input-group i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #00c6ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0072ff;
+            transform: scale(1.05);
+        }
+        .success-msg {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(0, 255, 150, 0.2);
+            border: 1px solid rgba(0, 255, 150, 0.5);
+            color: #00ffcc;
+            text-align: center;
+            font-weight: 500;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="form-box">
+        <h2>✨ Registration</h2>
+
+        <?php if ($message != ""): ?>
+    <div class="success-msg">
+        <?php echo $message; ?>
+    </div>
+        <?php endif; ?>
+
+        <form action="#" method="post">
+
+            <div class="input-group">
+                <i class="fa fa-id-card"></i>
+                <input type="number" name="id" placeholder="Enter ID" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" name="name" placeholder="Enter Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa fa-envelope"></i>
+                <input type="email" name="email" placeholder="Enter Email" required>
+            </div>
+
+            <button type="submit" name="btnsubmit">🚀 Submit</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<?php
+
+class Nhr
+{
+    protected $id;
+    public $name;
+    public $email;
+
+    public static $file_source = "nhr_text.txt";
+
+    public function __construct($id, $name, $email)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+    }
+}
+
+class Hasan extends Nhr
+{
+    function __construct($id, $name, $email)
+    {
+        parent::__construct($id, $name, $email);
+    }
+
+    public function formData()
+    {
+        return $this->id . "," . $this->name . "," . $this->email . PHP_EOL;
+    }
+
+    public function store()
+    {
+        file_put_contents(self::$file_source, $this->formData(), FILE_APPEND);
+    }
+
+    public static function display()
+    {
+        $file = file(self::$file_source);
+
+        foreach ($file as $line) {
+            list($id, $name, $email) = explode(",", trim($line));
+
+            echo "<tr>
+                    <td>$id</td>
+                    <td>$name</td>
+                    <td>$email</td>
+                  </tr>";
+        }
+    }
+}
+?>
+
+<style>
+    /* Background (more vibrant gradient) */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+        background-size: 300% 300%;
+        animation: gradientMove 8s ease infinite;
+    }
+
+    /* Animated gradient */
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Smaller container */
+    .table-box {
+        width: 55%;
+        margin: 60px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #fff;
+    }
+
+    /* Title */
+    .table-title {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    /* Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Header */
+    th {
+        padding: 10px;
+        background: linear-gradient(45deg, #ff512f, #dd2476);
+        font-size: 13px;
+    }
+
+    /* Cells */
+    td {
+        padding: 8px;
+        font-size: 13px;
+        text-align: center;
+        color: #fff;
+        font-weight: bolder;
+        font-size: 15px;
+    }
+
+    /* Row hover */
+    tr:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.01);
+        transition: 0.3s;
+    }
+
+    /* Zebra rows */
+    tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 4px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    /* Edit */
+    .edit {
+        background: #00dbde;
+        color: white;
+    }
+
+    /* Delete */
+    .delete {
+        background: #fc466b;
+        color: white;
+    }
+
+    /* Button hover */
+    .btn:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+</style>
+
+
+<table style="border-collapse: collapse;" border="" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    
+    <?php
+        require_once("nhr_class.php");
+        Hasan::display();
+    ?>
+
+</table>
+
+
+amake explain koro kivabe amar php kaj korche sohoj vabe pura ta bujhao presentation korar moto

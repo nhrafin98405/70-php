@@ -1,6 +1,10 @@
 <?php
 
 require_once("nhr_class.php");
+
+$message = "";
+
+
 if (isset($_POST["btnsubmit"])) {
 
 
@@ -10,7 +14,7 @@ if (isset($_POST["btnsubmit"])) {
 
     $r = new Hasan($uid, $uname, $uemail);
     $r->store();
-    // echo "successfully add";
+    $message = "✅ Data Successfully Added!";
 }
 
 
@@ -122,6 +126,17 @@ if (isset($_POST["btnsubmit"])) {
             background: #0072ff;
             transform: scale(1.05);
         }
+        .success-msg {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(0, 255, 150, 0.2);
+            border: 1px solid rgba(0, 255, 150, 0.5);
+            color: #00ffcc;
+            text-align: center;
+            font-weight: 500;
+            animation: fadeIn 0.5s ease-in-out;
+        }
     </style>
 
 </head>
@@ -130,6 +145,12 @@ if (isset($_POST["btnsubmit"])) {
 
     <div class="form-box">
         <h2>✨ Registration</h2>
+
+        <?php if ($message != ""): ?>
+    <div class="success-msg">
+        <?php echo $message; ?>
+    </div>
+        <?php endif; ?>
 
         <form action="#" method="post">
 
