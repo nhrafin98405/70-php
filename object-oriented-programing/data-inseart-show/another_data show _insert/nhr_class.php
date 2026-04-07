@@ -3,6 +3,7 @@
     protected $id;
     public $name;
     public $email;
+    
     public static $file_source = "nhr_text.txt";
     public function __construct($id, $name, $email)
     {
