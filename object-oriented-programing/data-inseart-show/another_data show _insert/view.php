@@ -112,18 +112,11 @@
         <th>Email</th>
     </tr>
 
+    
     <?php
-    $file = file("nhr_text.txt");
-
-    foreach ($file as $line) {
-        list($id, $name, $email) = explode(",", trim($line));
-
-        echo "<tr>
-            <td>$id</td>
-            <td>$name</td>
-            <td>$email</td>
-          </tr>";
-    }
+        require_once("nhr_class.php");
+        Hasan::display();
     ?>
 
 </table>
+
