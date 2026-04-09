@@ -33,7 +33,7 @@ if(isset($_POST['submitbutton'])){
 
     if($type == "jpg" || $type == "png"){
 
-        move_uploaded_file($file_tmp_name,$img.$file_name);
+        move_uploaded_file("$file_tmp_name","$img"."$file_name");
 
          echo "uplpaded";
 
