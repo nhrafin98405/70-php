@@ -1,6 +1,5 @@
+<?php 
 
-
-<?php
 
 
 if(isset($_POST['submit'])){
@@ -22,15 +21,24 @@ if(isset($_POST['submit'])){
 
 
 
+
 ?>
 
-<form method="post">
 
-    
 
-    Number 1: <input type="number" name="num1"><br><br>
-    Number 2: <input type="number" name="num2"><br><br>
-    Number 3: <input type="number" name="num3"><br><br>
+<form  method="post"> 
+
+<br><br><br><br>
+
+    First Number : <br>
+    <input type="number" name="num1"> <br><br>
+    Second Number : <br>
+    <input type="number" name="num2"> <br><br>
+    Third Number : <br>
+    <input type="number" name="num3"> <br><br>
+
+    <br>
+    <br>
 
     <input type="submit" name="submit" value="Find Largest">
 </form>

@@ -18,7 +18,7 @@
 <br>
 
 
-<a href="login2.php">log-out</a>
+<a href="log-in2.php">log-out</a>
     
 </body>
 </html>

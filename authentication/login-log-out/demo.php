@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<a href="another.php">another</a>
+<a href="main2.php">another</a>
 <form action="#" method="post">
 <div>Id<br/>
 <input type="text" name="txtId" />
