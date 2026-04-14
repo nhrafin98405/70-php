@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    background: #000;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* NAVBAR */
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.nav ul {
+    position: relative;
+    display: flex;
+    gap: 60px;
+    list-style: none;
+    padding: 0;
+}
+
+/* MENU ITEMS */
+.nav ul li {
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 5px;
+    transition: 0.3s;
+}
+
+.nav ul li:hover {
+    color: #fff;
+}
+
+/* ACTIVE TEXT */
+.nav ul li.active {
+    color: #fff;
+    text-shadow:
+        0 0 8px red,
+        0 0 15px red,
+        0 0 25px red;
+}
+
+/* WHITE BASE LINE */
+.nav ul::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: var(--w, 0px);
+    left: var(--x, 0px);
+    background: #fff;
+    transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 🔥 RED GLOW BEAM */
+.nav ul::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    height: 4px;
+    width: 60px;
+
+    left: var(--x, 0px);
+
+    background: linear-gradient(90deg, transparent, red, transparent);
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px red,
+        0 0 20px red,
+        0 0 40px red;
+
+    animation: beam 1.5s linear infinite;
+}
+
+/* BEAM ANIMATION */
+@keyframes beam {
+    0% {
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
