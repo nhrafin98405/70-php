@@ -1,4 +1,3 @@
-<?php require_once("nhr-login-home.php"); ?>
 <?php 
 session_start();
 
@@ -52,13 +51,27 @@ if (isset($_POST["btnregister"])) {
 
 <style>
     body{
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        background: linear-gradient(135deg,#ff758c,#ff7eb3);
-        font-family:sans-serif;
-    }
+    min-height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:sans-serif;
+}
+/* NAVBAR FIX */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+}
+
+/* CENTER ONLY CARD */
+.main{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-top:80px; /* adjust based on navbar height */
+}
 
     .card{
         background: rgba(255,255,255,0.15);
@@ -111,20 +124,23 @@ if (isset($_POST["btnregister"])) {
 
 </head>
 <body>
+    <?php require_once("nhr-login-home.php"); ?>
 
-<div class="card">
-    <h2 style="color:white;">Register</h2>
+<div class="main">
+    <div class="card">
+        <h2 style="color:white;">Register</h2>
 
-    <p class="msg"><?php echo $message; ?></p>
+        <p class="msg"><?php echo $message; ?></p>
 
-    <form method="post">
-        <input type="text" name="name" placeholder="Username" required>
-        <input type="password" name="pass" placeholder="Password" required>
+        <form method="post">
+            <input type="text" name="name" placeholder="Username" required>
+            <input type="password" name="pass" placeholder="Password" required>
 
-        <button name="btnregister">Register</button>
-    </form>
+            <button name="btnregister">Register</button>
+        </form>
 
-    <a href="nhr-login-login.php">Back to Login</a>
+        <a href="nhr-login-login.php">Back to Login</a>
+    </div>
 </div>
 
 </body>

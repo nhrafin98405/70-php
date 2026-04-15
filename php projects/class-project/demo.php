@@ -15,9 +15,6 @@
     body{
         height:100vh;
         overflow:hidden;
-        display:flex;
-        justify-content:center;
-        align-items:center;
         background: radial-gradient(circle at top,#0b0f2a,#05010a);
     }
 
@@ -122,6 +119,8 @@
 </head>
 
 <body>
+
+    <?php require_once("nhr-login-home.php"); ?>
 
 <canvas id="particles"></canvas>
 

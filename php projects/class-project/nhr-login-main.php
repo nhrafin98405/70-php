@@ -106,6 +106,7 @@ button{
 
 </head>
 <body>
+    <?php require_once("nhr-login-home.php"); ?>
 
 <h2>Welcome <?php echo $_SESSION["rname"]; ?></h2>
 

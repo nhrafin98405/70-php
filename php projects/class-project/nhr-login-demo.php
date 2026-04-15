@@ -1,4 +1,3 @@
-<?php require_once("nhr-login-home.php"); ?>
 <?php 
 session_start();
 
@@ -189,6 +188,7 @@ a{
 </head>
 
 <body>
+    <?php require_once("nhr-login-home.php"); ?>
 
 <div class="header">
     <h2>👋 Welcome <?php echo $user; ?></h2>

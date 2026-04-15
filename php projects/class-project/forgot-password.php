@@ -1,4 +1,3 @@
-<?php require_once("nhr-login-home.php"); ?>
 <?php
 session_start();
 
@@ -219,6 +218,7 @@ p{
 </head>
 
 <body>
+    <?php require_once("nhr-login-home.php"); ?>
 
 <h2>Forgot Password</h2>
 

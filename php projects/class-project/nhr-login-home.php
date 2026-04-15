@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // get current page for active menu
 $current = basename($_SERVER['PHP_SELF']);
 
