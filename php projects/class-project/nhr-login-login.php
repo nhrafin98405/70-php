@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $message = ""; // 🔥 ADD THIS LINE
 
@@ -278,7 +281,13 @@ if (isset($_POST["btnsubmit"])) {
             card.style.transform = "rotateY(0deg) rotateX(0deg)";
         });
     </script>
-
+<script>
+window.addEventListener("storage", function(event) {
+    if (event.key === "logout") {
+        window.location.href = "nhr-login-login.php";
+    }
+});
+</script>
 </body>
 
 </html>

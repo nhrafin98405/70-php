@@ -11,5 +11,13 @@
     echo "User created successfully!";
 
     // <a href="nhr-login-login.php">Back to Login</a>
+    
 ?>
+<script>
+window.addEventListener("storage", function(event) {
+    if (event.key === "logout") {
+        window.location.href = "nhr-login-login.php";
+    }
+});
+</script>
 

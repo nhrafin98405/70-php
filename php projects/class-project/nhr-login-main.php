@@ -1,6 +1,8 @@
 <?php 
 require_once("nhr-login-home.php"); 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION["rname"])) {
     header("location:nhr-login-login.php");
@@ -153,6 +155,12 @@ button{
 <a href="nhr-login-logout.php">Logout</a>
 
 </div>
-
+<script>
+window.addEventListener("storage", function(event) {
+    if (event.key === "logout") {
+        window.location.href = "nhr-login-login.php";
+    }
+});
+</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $message = "";
 
@@ -59,12 +61,7 @@ if (isset($_POST["btnreset"])) {
 
 body{
     height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
     overflow:hidden;
-
     background: radial-gradient(circle at top,#05010a,#000000);
 }
 
@@ -106,7 +103,7 @@ h2{
     font-size:26px;
     letter-spacing:3px;
     text-transform:uppercase;
-
+    text-align:center;
     text-shadow:
         0 0 10px #00f5ff,
         0 0 20px #ff00ff;
@@ -115,24 +112,18 @@ h2{
 
 /* form card */
 form{
-    width:360px;
-    padding:45px;
-    border-radius:20px;
-    text-align:center;
-
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(25px);
-
-    border:1px solid rgba(255,255,255,0.12);
-
-    box-shadow:
-        0 0 30px rgba(0,245,255,0.2),
-        0 0 60px rgba(255,0,255,0.1);
-
-    position:relative;
-    z-index:2;
-
-    animation: fadeIn 0.8s ease;
+    background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(15px);
+        padding:40px;
+        border-radius:20px;
+        width:320px;
+        text-align:center;
+        box-shadow:0 10px 30px rgba(0,0,0,0.2);
+        animation: fade 4s;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
 }
 
 @keyframes fadeIn{
@@ -236,5 +227,12 @@ p{
 
 </form>
 
+<script>
+window.addEventListener("storage", function(event) {
+    if (event.key === "logout") {
+        window.location.href = "nhr-login-login.php";
+    }
+});
+</script>
 </body>
 </html>
