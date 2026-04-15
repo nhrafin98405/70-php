@@ -1,12 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
->>>>>>> b21f18d (add this)
 // get current page for active menu
 $current = basename($_SERVER['PHP_SELF']);
 

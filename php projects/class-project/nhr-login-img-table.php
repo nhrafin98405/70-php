@@ -1,4 +1,3 @@
-<?php require_once("nhr-login-home.php"); ?>
 <?php 
 
     if (session_status() === PHP_SESSION_NONE) {
@@ -9,7 +8,7 @@
         header("location:nhr-login-login.php");
         exit();
     }
-
+    require_once("nhr-login-home.php");
     $user = $_SESSION["rname"];
     $folder = "img/";
     $postFile = "img/posts.txt";

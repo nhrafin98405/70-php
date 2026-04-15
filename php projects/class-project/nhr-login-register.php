@@ -57,7 +57,6 @@ if (isset($_POST["btnregister"])) {
     min-height:100vh;
     background: linear-gradient(135deg,#ff758c,#ff7eb3);
     font-family:sans-serif;
-<<<<<<< HEAD
 }
 /* NAVBAR FIX */
 nav{
@@ -76,9 +75,6 @@ nav{
     align-items:center;
     padding-top:80px; /* adjust based on navbar height */
 }
-=======
-    }
->>>>>>> b21f18d (add this)
 
     .card{
         background: rgba(255,255,255,0.15);
