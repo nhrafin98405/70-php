@@ -20,4 +20,3 @@ window.addEventListener("storage", function(event) {
     }
 });
 </script>
-
